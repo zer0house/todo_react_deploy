@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(162, 250, 255);
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -36,4 +36,29 @@ button.addButton:hover {
 .todoText {
   margin-left: 10px;
   flex-grow: 1;
+}
+
+.title {
+  animation: move 2s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.text-move {
+  animation: move 1s linear infinite;
+}
+
+.active {
+  text-decoration: line-through;
+  opacity: 0.5;
 }

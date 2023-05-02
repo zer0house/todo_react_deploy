@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "@/components/TodoItem";
 import styles from "@/styles/TodoList.module.css";
+import "animate.css";
 
 // firebase 관련 모듈을 불러옵니다.
 import { db } from "@/firebase";
@@ -18,7 +19,7 @@ import {
   updateDoc,
   deleteDoc,
   orderBy,
-} from "firebase/firestore";
+} from "firebase/firestore"
 
 // DB의 todos 컬렉션 참조를 만듭니다. 컬렉션 사용시 잘못된 컬렉션 이름 사용을 방지합니다.
 const todoCollection = collection(db, "todos");
@@ -30,12 +31,12 @@ const TodoList = () => {
   const [input, setInput] = useState("");
 
   const getTodos = async () => {
-    // Firestore 쿼리를 만듭니다.
+    // Firesotre 쿼리를 만듭니다.
     const q = query(todoCollection);
     // const q = query(collection(db, "todos"), where("user", "==", user.uid));
-    // const q = query(todoCollection, orderBy("datetime", "desc"));
+    // const q = query(todoCollection, orderBy("datetime", "desc"))
 
-    // Firestore 에서 할 일 목록을 조회합니다.
+    // Firestore에서 할 일 목록을 조회합니다.
     const results = await getDocs(q);
     const newTodos = [];
 
@@ -44,7 +45,7 @@ const TodoList = () => {
       // console.log(doc.data());
       // id 값을 Firestore 에 저장한 값으로 지정하고, 나머지 데이터를 newTodos 배열에 담습니다.
       newTodos.push({ id: doc.id, ...doc.data() });
-    });
+    })
 
     setTodos(newTodos);
   };
@@ -72,10 +73,17 @@ const TodoList = () => {
     });
 
     // id 값을 Firestore 에 저장한 값으로 지정합니다.
-    setTodos([...todos, { id: docRef.id, text: input, completed: false }]);
+    setTodos([...todos, { id: docRef.id, text: input, completed: false, timestamp: Date.now() }]);
     setInput("");
+    const container = document.querySelector(`.${styles.container}`);
+    container.classList.add("animate__animated", "animate__bounce");
+    setTimeout(() => {
+      container.classList.remove("animate__animated", "animate__bounce");
+    }, 1000);
   };
 
+
+  
   // toggleTodo 함수는 체크박스를 눌러 할 일의 완료 상태를 변경하는 함수입니다.
   const toggleTodo = (id) => {
     // 할 일 목록에서 해당 id를 가진 할 일의 완료 상태를 반전시킵니다.
@@ -112,7 +120,8 @@ const TodoList = () => {
   // 컴포넌트를 렌더링합니다.
   return (
     <div className={styles.container}>
-      <h1 className="text-xl mb-4 font-bold underline underline-offset-4 decoration-wavy">
+      <h1 className="text-xl mb-4 font-bold" style={{ 
+       textDecoration: "underline dotted", color: "gray" }}>
         Todo List
       </h1>
       {/* 할 일을 입력받는 텍스트 필드입니다. */}
@@ -125,12 +134,17 @@ const TodoList = () => {
         //   padding: 5px;
         //   margin-bottom: 10px;
         // }
-        className="w-full p-1 mb-4 border border-gray-300 rounded"
+        className="shadow-lg w-full p-1 mb-4 border border-gray-300 rounded"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            addTodo();
+          }
+        }}
       />
       {/* 할 일을 추가하는 버튼입니다. */}
-      <div className="grid">
+      <div class="grid">
         <button
           // className={styles.addButton}
           // -- addButton CSS code --
@@ -147,12 +161,7 @@ const TodoList = () => {
           //   background-color: #fff;
           //   color: #0070f3;
           // }
-          className={`w-40
-                      justify-self-end
-                      p-1 mb-4
-                    bg-blue-500 text-white
-                      border border-blue-500 rounded
-                    hover:bg-white hover:text-blue-500`}
+          className="shadow-lg w-40 justify-self-end p-1 mb-4 font-bold bg-blue-500 text-white border border-blue-500 rounded hover:bg-white hover:text-blue-500"
           onClick={addTodo}
         >
           Add Todo
