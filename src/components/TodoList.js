@@ -6,7 +6,6 @@
 import React, { useState, useEffect } from "react";
 import TodoItem from "@/components/TodoItem";
 import styles from "@/styles/TodoList.module.css";
-import "animate.css";
 
 // firebase 관련 모듈을 불러옵니다.
 import { db } from "@/firebase";
