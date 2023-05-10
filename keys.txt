@@ -1,17 +1,1 @@
-카카오디벨로퍼
-내 애플리케이션 > 앱 설정 > 요약 정보 > 앱 키 > REST API 키(KAKAO_CLIENT_ID): 814c629580ec9a6dc3df6d53775a07a2
-KAKAO_CLIENT_SECRET: kxHC8DJXM4AWwGP4nP1pRmnVcdNgelU1
-
-버셀
-NEXTAUTH_SECRET: 8XBZ5etrCv
-
-구글
-클라이언트 ID
-474978350996-r8huflefofj37k8didfn6qfubiu2fhs8.apps.googleusercontent.com
-클라이언트 보안 비밀번호
-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
-
-
-네이버
-9qB6B4u97xoUtXnH1sGz
-bTUnkhqQUC
+보안 철저 ^^7
