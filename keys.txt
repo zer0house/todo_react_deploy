@@ -4,3 +4,14 @@ KAKAO_CLIENT_SECRET: kxHC8DJXM4AWwGP4nP1pRmnVcdNgelU1
 
 버셀
 NEXTAUTH_SECRET: 8XBZ5etrCv
+
+구글
+클라이언트 ID
+474978350996-r8huflefofj37k8didfn6qfubiu2fhs8.apps.googleusercontent.com
+클라이언트 보안 비밀번호
+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
+
+
+네이버
+9qB6B4u97xoUtXnH1sGz
+bTUnkhqQUC
