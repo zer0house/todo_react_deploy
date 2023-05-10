@@ -62,3 +62,9 @@ button.addButton:hover {
   text-decoration: line-through;
   opacity: 0.5;
 }
+
+.todoTime {
+  font-size: 12px;
+  color: #666;
+  margin-right: 10px;
+}
