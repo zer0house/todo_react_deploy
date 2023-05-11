@@ -26,6 +26,7 @@ export default function Signin() {
       {session ? (
         <div className="grid m-auto text-center">
           <div className="m-4">안녕하세요, {session.user.name}님! 오늘의 할 일을 확인해볼까요? 😀</div>
+          {/* Todo List 이동 버튼 */}
           <button
             className={`w-40
                       justify-self-center
@@ -38,6 +39,8 @@ export default function Signin() {
             Todo List
           </button>
 
+
+          {/* 유저 아이디 확인하기 버튼 */}
           <button
             className={`${buttonWidth}
                           justify-self-center
@@ -55,6 +58,8 @@ export default function Signin() {
           >
             {showId ? session.user.id : "user.id 확인하기"}
           </button>
+
+          {/* 현 세션의 유저 아이디가 다음과 같을 경우 /admin으로 보내는 버튼 출력 */}
           {session?.user.id === "107116436055246186922" ? (
             <button
               className={`w-40
